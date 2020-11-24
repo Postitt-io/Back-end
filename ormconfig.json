@@ -3,10 +3,10 @@
    "host": "localhost",
    "port": 5432,
    "username": "postitt",
-   "password": "",
+   "password": "Postitt!!",
    "database": "postitt",
    "synchronize": true,
-   "logging": false,
+   "logging": true,
    "entities": [
       "src/entities/**/*.ts"
    ],
