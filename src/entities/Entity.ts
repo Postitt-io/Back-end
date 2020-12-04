@@ -1,7 +1,7 @@
 import { UpdateDateColumn } from "typeorm";
 import { CreateDateColumn } from "typeorm";
 import { BaseEntity } from "typeorm";
-import { PrimaryGeneratedColumn, Column } from "typeorm";
+import { PrimaryGeneratedColumn } from "typeorm";
 
 import { classToPlain, Exclude } from "class-transformer";
 

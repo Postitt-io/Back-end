@@ -20,7 +20,7 @@ const createSub = async (req: Request, res: Response) => {
       .createQueryBuilder("sub")
       .where("lower(sub.name) = :name", { name: name.toLowerCase() }).getOne;
 
-    if (sub) errors.name = "Sorry, Sub exists already";
+    if (sub!) errors.name = "Sorry, Sub exists already";
 
     if (Object.keys(errors).length > 0) {
       throw errors;
