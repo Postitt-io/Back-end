@@ -17,9 +17,9 @@ import trim from "./middleware/trim";
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors());
 app.use(trim);
 app.use(cookieParser());
 

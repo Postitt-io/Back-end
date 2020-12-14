@@ -14,7 +14,10 @@ const mapErrors = (errors: Object[]) => {
   }, {});
 };
 
-const register = async (req: Request, res: Response) => {
+const register = async (
+  req: Request,
+  res: Response
+): Promise<Response<any>> => {
   const { email, username, password } = req.body;
 
   try {

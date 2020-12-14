@@ -6,7 +6,6 @@ export default (req: Request, _: Response, next: NextFunction) => {
     if (!exceptions.includes(key) && typeof req.body[key] === "string") {
       req.body[key] = req.body[key].trim();
     }
-
-    next();
   });
+  next();
 };
