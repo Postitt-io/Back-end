@@ -20,7 +20,7 @@ const createPost = async (req: Request, res: Response) => {
     const subRecord = await Sub.findOneOrFail({ name: sub });
 
     const post = new Post({ title, body, user, sub: subRecord });
-    await post.save;
+    await post.save();
     return res.json(post);
   } catch (err) {
     console.log(err);

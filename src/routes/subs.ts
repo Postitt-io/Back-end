@@ -20,7 +20,7 @@ const createSub = async (req: Request, res: Response) => {
       .createQueryBuilder("sub")
       .where("lower(sub.name) = :name", { name: name.toLowerCase() }).getOne;
 
-    if (sub!) errors.name = "Sorry, Sub exists already";
+    if (!sub) errors.name = "Sorry, Sub exists already";
 
     if (Object.keys(errors).length > 0) {
       throw errors;
@@ -31,11 +31,10 @@ const createSub = async (req: Request, res: Response) => {
 
   try {
     const sub = new Sub({ name, description, title, user });
-    await sub.save;
+    await sub.save();
 
     return res.json(sub);
   } catch (err) {
-    console.log(err);
     return res.status(500).json({ error: "Something went wrong" });
   }
 };
