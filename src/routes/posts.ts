@@ -3,6 +3,7 @@ import Comment from "../entities/Comment";
 
 import Post from "../entities/Post";
 import Sub from "../entities/Sub";
+import User from "../entities/User";
 
 import auth from "../middleware/auth";
 
@@ -56,7 +57,8 @@ const getPost = async (req: Request, res: Response) => {
 
 const commentOnPost = async (req: Request, res: Response) => {
   const { identifier, slug } = req.params;
-  const { body } = req.body.body;
+  const body = req.body.body;
+
   try {
     const post = await Post.findOneOrFail({ identifier, slug });
 
@@ -70,7 +72,7 @@ const commentOnPost = async (req: Request, res: Response) => {
     return res.json(comment);
   } catch (err) {
     console.log(err);
-    return res.status(404).json({ eror: "Post not found" });
+    return res.status(404).json({ error: "Post not found" });
   }
 };
 
@@ -79,6 +81,6 @@ const router = Router();
 router.post("/", auth, createPost);
 router.get("/", getPosts);
 router.get("/:identifier/:slug", getPost);
-router.post("/:identifier/:slug/comments", commentOnPost);
+router.post("/:identifier/:slug/comments", auth, commentOnPost);
 
 export default router;
