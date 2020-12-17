@@ -52,6 +52,7 @@ export default class Post extends Entity {
   @JoinColumn({ name: "subName", referencedColumnName: "name" })
   sub: Sub;
 
+  @Exclude()
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Comment[];
 
@@ -63,11 +64,13 @@ export default class Post extends Entity {
     return `/p/${this.subName}/${this.identifier}/${this.slug}`;
   }
 
-  @Expose() commentCount(): number {
+  @Expose()
+  commentCount(): number {
     return this.comments?.length;
   }
 
-  @Expose() voteScore(): number {
+  @Expose()
+  voteScore(): number {
     return this.votes?.reduce((prev, curr) => prev + (curr.value || 0), 0);
   }
 
