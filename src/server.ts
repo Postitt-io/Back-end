@@ -30,6 +30,8 @@ app.use(
 app.use(trim);
 app.use(cookieParser());
 
+app.use(express.static("public"));
+
 app.get("/", (_, res) => res.send("Hello World"));
 app.use("/api/auth", authRoutes);
 app.use("/api/subs", subRoutes);
