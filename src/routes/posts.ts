@@ -54,8 +54,6 @@ const getPost = async (req: Request, res: Response) => {
       { identifier, slug },
       { relations: ["sub", "votes", "comments"] }
     );
-
-    // TODO: #13 Make this bloody work
     if (res.locals.user) {
       post.setUserVote(res.locals.user);
     }
