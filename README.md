@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/Postitt-io/Back-end/workflows/Node.js%20CI/badge.svg)
+
 # Postitt Setup
 
 This is an example of how to set up the dev environment to work on Postitt.
