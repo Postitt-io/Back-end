@@ -34,7 +34,7 @@
     "npm-check-updates": "^10.2.5",
     "pg": "8.5.1",
     "reflect-metadata": "0.1.13",
-    "typeorm": "0.2.29",
+    "typeorm": "0.2.30",
     "typeorm-seeding": "1.6.1"
   },
   "scripts": {
