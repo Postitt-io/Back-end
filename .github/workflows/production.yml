@@ -8,7 +8,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Rebild Server with latest from Main
+      - name: Rebuild Server with latest from Main
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: |
