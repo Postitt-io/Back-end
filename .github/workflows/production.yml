@@ -1,0 +1,22 @@
+name: Pull code, rebuild files and restart pm2 processes
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rebild Server with latest from Main
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: |
+            cd postitt.io/Back-end
+            git pull
+            npx tsc
+            npm run build
+            pm2 restart server
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          privateKey: ${{ secrets.PRIVATE_KEY}}
