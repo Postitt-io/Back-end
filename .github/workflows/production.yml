@@ -15,7 +15,6 @@ jobs:
             cd postitt.io/Back-end
             git pull
             npx tsc
-            npm run build
             pm2 restart server
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
