@@ -13,6 +13,8 @@ import Post from "../entities/Post";
 import { makeId } from "../util/helpers";
 import rateLimit from "express-rate-limit";
 
+import sanitize from "sanitize-filename";
+
 const limiter = new (rateLimit as any)({
   windowMs: 1 * 60 * 1000,
   max: 5,
@@ -117,7 +119,7 @@ const uploadSubImage = async (req: Request, res: Response) => {
     const type = req.body.type;
 
     if (type !== "image" && type !== "banner") {
-      fs.unlinkSync(req.file.path);
+      fs.unlinkSync(sanitize(req.file.path));
       return res.status(400).json({ error: "Invalid type" });
     }
 
@@ -134,7 +136,7 @@ const uploadSubImage = async (req: Request, res: Response) => {
     await sub.save();
 
     if (oldImageUrn !== "") {
-      fs.unlinkSync(`public\\images\\${oldImageUrn}`);
+      fs.unlinkSync(sanitize(`public\\images\\${oldImageUrn}`));
     }
 
     return res.json(sub);
