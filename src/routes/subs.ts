@@ -11,6 +11,13 @@ import auth from "../middleware/auth";
 import user from "../middleware/user";
 import Post from "../entities/Post";
 import { makeId } from "../util/helpers";
+import rateLimit from "express-rate-limit";
+
+const limiter = new (rateLimit as any)({
+  windowMs: 1 * 60 * 1000,
+  max: 5,
+  message: "Too Many image uploads from this IP, try again in 1 minute.",
+});
 
 const createSub = async (req: Request, res: Response) => {
   const { name, title, description } = req.body;
@@ -164,6 +171,7 @@ router.get("/:name", user, getSub);
 router.get("/search/:name", searchForSub);
 router.post(
   "/:name/image",
+  limiter,
   user,
   auth,
   ownSub,
