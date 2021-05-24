@@ -24,7 +24,7 @@
     "bcrypt": "5.0.1",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",
-    "concurrently": "6.1.0",
+    "concurrently": "6.2.0",
     "cookie": "^0.4.1",
     "cookie-parser": "1.4.5",
     "cors": "2.8.5",
