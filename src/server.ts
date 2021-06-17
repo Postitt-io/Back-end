@@ -1,7 +1,7 @@
+import express, { Express, RequestHandler } from "express";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import express from "express";
-import morgan from "morgan";
+import morgan, { FormatFn, Morgan } from "morgan";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -16,11 +16,11 @@ import userRoutes from "./routes/users";
 
 import trim from "./middleware/trim";
 
-const app = express();
+const app: Express = express();
 const PORT = process.env.PORT;
 
-app.use(express.json());
-app.use(morgan("dev"));
+app.use(express.json() as RequestHandler);
+app.use(morgan("dev") as RequestHandler);
 app.use(
   cors({
     credentials: true,
