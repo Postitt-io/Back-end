@@ -14,6 +14,7 @@ jobs:
           command: |
             cd postitt.io/Back-end
             git pull
+            npm install
             npx tsc
             pm2 restart server
           host: ${{ secrets.HOST }}
